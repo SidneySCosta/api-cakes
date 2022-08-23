@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bolo;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 
 class BoloController extends Controller
@@ -22,12 +23,20 @@ class BoloController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StudentRequest $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'between:2,100'],
+            'peso' => ['required'],
+            'valor' => ['required'],
+            'quantidade' => ['required', 'int']
+        ]);
+        $dadosBolo = $request->all();
+
+        return response(Bolo::create($dadosBolo), 201);
     }
 
     /**
@@ -36,9 +45,9 @@ class BoloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bolo $bolo)
     {
-        return Bolo::findOrFail($id);
+        return $bolo;
     }
 
     /**

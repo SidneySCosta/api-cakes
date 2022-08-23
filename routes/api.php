@@ -21,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/bolos', [BoloController::class, 'index'])->name('bolos.index');
 
-Route::get('/bolos/{id}', [StudentController::class, 'show'])->name('bolos.show');
+Route::get('/bolos/{bolo}', [BoloController::class, 'show'])->name('bolos.show');
+
+Route::post('/bolos', [BoloController::class, 'store'])->name('bolos.store');
