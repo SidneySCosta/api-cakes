@@ -24,3 +24,5 @@ Route::get('/bolos', [BoloController::class, 'index'])->name('bolos.index');
 Route::get('/bolos/{bolo}', [BoloController::class, 'show'])->name('bolos.show');
 
 Route::post('/bolos', [BoloController::class, 'store'])->name('bolos.store');
+
+Route::post('/bolos/{bolo}', [BoloController::class, 'update'])->name('bolos.update');

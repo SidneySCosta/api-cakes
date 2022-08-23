@@ -57,9 +57,17 @@ class BoloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Bolo $bolo)
     {
-        //
+        $request->validate([
+            'nome' => ['required', 'string', 'between:2,100'],
+            'peso' => ['required'],
+            'valor' => ['required'],
+            'quantidade' => ['required', 'int']
+        ]);
+        $bolo->update($request->all());
+
+        return $bolo;
     }
 
     /**
