@@ -12,6 +12,13 @@ class Interessado extends Model
 
 
     /**
+     * Indica os campos 
+     *
+     * @var array
+     */
+    protected $fillable = ['email', "bolo_id"];
+
+    /**
      * Define a relação entre interessado e bolo
      *
      * @return BelongsTo

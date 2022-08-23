@@ -25,7 +25,7 @@ class BoloController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param StudentRequest $request
+     * @param BoloRequest $request
      * @return Response
      */
     public function store(BoloRequest $request): Response
