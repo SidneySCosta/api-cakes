@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BoloRequest;
 use App\Models\Bolo;
 use Illuminate\Http\Response;
-use Illuminate\Http\Request;
+use App\Http\Requests\BoloRequest;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class BoloController extends Controller
 //Controller criado usando o aliase "--api" para montar o crud da API
@@ -13,12 +14,12 @@ class BoloController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Collection
+     * retornando uma collection do banco de dados
      */
-    public function index()
+    public function index(): Collection
     {
-        //personalizando a respostas
-        return response(Bolo::get(), 200, []);
+        return Bolo::get();
     }
 
     /**
@@ -27,21 +28,21 @@ class BoloController extends Controller
      * @param StudentRequest $request
      * @return Response
      */
-    public function store(BoloRequest $request)
+    public function store(BoloRequest $request): Response
     {
-
-        $dadosBolo = $request->all();
-
-        return response(Bolo::create($dadosBolo), 201);
+        return response(
+            Bolo::create($request->all()),
+            201
+        );
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  Bolo $bolo
+     * @return Bolo
      */
-    public function show(Bolo $bolo)
+    public function show(Bolo $bolo): Bolo
     {
         return $bolo;
     }
@@ -49,11 +50,11 @@ class BoloController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param BoloRequest $request
+     * @param Bolo $bolo
+     * @return Bolo
      */
-    public function update(BoloRequest $request, Bolo $bolo)
+    public function update(BoloRequest $request, Bolo $bolo): Bolo
     {
         $bolo->update($request->all());
 
@@ -63,11 +64,13 @@ class BoloController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  Bolo $bolo
+     * @return array
      */
-    public function destroy($id)
+    public function destroy(Bolo $bolo)
     {
-        //
+        $bolo->delete();
+
+        return [];
     }
 }
