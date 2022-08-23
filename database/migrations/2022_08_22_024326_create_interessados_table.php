@@ -15,12 +15,9 @@ return new class extends Migration
     {
         Schema::create('interessados', function (Blueprint $table) {
             $table->id();
-
-            $table->string('email');
-
+            $table->string('email', 100);
             $table->integer('bolo_id');
-            $table->foreing('bolo_id')->reference('id')->on('bolos');
-
+            $table->foreign('bolo_id')->references('id')->on('bolos');
             $table->timestamps();
         });
     }
