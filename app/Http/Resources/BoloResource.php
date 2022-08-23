@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class InteressadoUnico extends JsonResource
+class BoloResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,8 +16,10 @@ class InteressadoUnico extends JsonResource
     {
         return [
             'id' => $this->id,
-            'email_interessado' => $this->email,
-            'bolo' => new BoloResource($this->bolo)
+            'nome' => $this->nome,
+            'peso' => $this->peso,
+            'valor' => $this->valor,
+            'quantidade' => $this->quantidade
         ];
     }
 }
