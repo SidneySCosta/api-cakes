@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Interessado;
 use Illuminate\Http\Response;
 use App\Http\Requests\InteressadoRequest;
-
+use App\Http\Resources\InteressadoColecao;
+use App\Http\Resources\InteressadoUnico;
 use Illuminate\Database\Eloquent\Collection;
 
 
@@ -19,9 +20,9 @@ class InteressadoController extends Controller
      * @return Collection
      * retornando uma collection do banco de dados
      */
-    public function index(): Collection
+    public function index()
     {
-        return Interessado::get();
+        return new InteressadoColecao(Interessado::get());
     }
 
     /**
@@ -44,9 +45,9 @@ class InteressadoController extends Controller
      * @param  int  Interessado $interessado
      * @return Interessado
      */
-    public function show(Interessado $interessado): Interessado
+    public function show(Interessado $interessado)
     {
-        return $interessado;
+        return new InteressadoUnico($interessado);
     }
 
 
