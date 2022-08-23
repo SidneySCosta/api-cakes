@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\InteressadoMail;
 use App\Models\Interessado;
 use Illuminate\Http\Response;
 use App\Http\Requests\InteressadoRequest;
 use App\Http\Resources\InteressadoColecao;
 use App\Http\Resources\InteressadoUnico;
 use Illuminate\Database\Eloquent\Collection;
-
-
+use Illuminate\Support\Facades\Mail;
 
 class InteressadoController extends Controller
 {
