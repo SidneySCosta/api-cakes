@@ -17,6 +17,8 @@ Para a implementacao do CRUD fora utilizado:
 - API Resource personalizadas (https://laravel.com/docs/9.x/eloquent-resources)
 - Validation com Form Request para os Controllers (https://laravel.com/docs/9.x/validation#form-request-validation)
 
+OBS: O processo do envio de email não fora finalizado 100%.
+
 
 ## Instalando o projeto
 #### Clonar o repositório
