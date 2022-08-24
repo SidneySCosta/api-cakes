@@ -56,7 +56,7 @@ php artisan migrate
 php artisan serve
 ```
 
-## Testar API via Postman/Insominia
+## Testar API via Postman/Insomnia
 No `BODY` setar os seguintes parametros:
 ```bash
   content-type: application/json
